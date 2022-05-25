@@ -1,4 +1,4 @@
-# DemoOFdinn
+# DemoOFdinn2
 A simple demo for dinn  
 
 1.仅支持16 * 16的图片，没有保护程序，识别非规范图片会崩溃  
