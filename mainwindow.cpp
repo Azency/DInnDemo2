@@ -52,8 +52,14 @@ void MainWindow::on_openAction_clicked()
     }
 
     setWindowTitle(QFileInfo(filename).fileName() + tr(" - imageViewer"));
-
+    
+    //转换灰度
     QImage imagegry = image.convertToFormat(QImage::Format_Grayscale8);
+    
+    //放大图片
+    qreal width = pixmap.width();
+    qreal height = pixmap.height();
+    pixmap = pixmap.scaled(width*4,height*4,Qt::KeepAspectRatio);
 
 
     QPixmap pixmap = QPixmap::fromImage(imagegry); //
@@ -107,10 +113,15 @@ void MainWindow::on_encryptAction_clicked()
  
     QPixmap pixmap = QPixmap::fromImage(imagegry_enc); //
     qDebug() << "filname: " << pixmap;
+    
+    //放大图片
+    qreal width = pixmap.width();
+    qreal height = pixmap.height();
+    pixmap = pixmap.scaled(width*4,height*4,Qt::KeepAspectRatio);
 
+    //显示图片
     ui->imageLabel_2->setPixmap(pixmap);
     ui->imageLabel_2->resize(pixmap.size());
-
     ui->imageLabel_2->setPixmap(pixmap.scaled(ui->imageLabel_2->size(), Qt::IgnoreAspectRatio     , Qt::SmoothTransformation));
 
 
