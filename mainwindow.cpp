@@ -56,14 +56,12 @@ void MainWindow::on_openAction_clicked()
     //转换灰度
     QImage imagegry = image.convertToFormat(QImage::Format_Grayscale8);
     
+    QPixmap pixmap = QPixmap::fromImage(imagegry); //
+    qDebug() << "filname: " << pixmap;
     //放大图片
     qreal width = pixmap.width();
     qreal height = pixmap.height();
     pixmap = pixmap.scaled(width*4,height*4,Qt::KeepAspectRatio);
-
-
-    QPixmap pixmap = QPixmap::fromImage(imagegry); //
-    qDebug() << "filname: " << pixmap;
 
     ui->imageLabel->setPixmap(pixmap);
     ui->imageLabel->resize(pixmap.size());
